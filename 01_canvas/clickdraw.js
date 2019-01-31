@@ -22,11 +22,11 @@ clear_button.addEventListener("click", function(e) {
 // toggle button
 toggle_button.addEventListener("click", function(e) {
   if (current_shape == "box") {
-    toggle_button.innerHTML = "Toggle Box"; // not necessary, changes button text
+    toggle_button.innerHTML = "Toggle Box"; // changes button text
     current_shape = "dot";
   }
   else if (current_shape == "dot") {
-    toggle_button.innerHTML = "Toggle Dot"; // not necessary, changes button text
+    toggle_button.innerHTML = "Toggle Dot"; // changes button text
     current_shape = "box";
   }
 });
@@ -41,7 +41,7 @@ c.addEventListener("click", function(e) {
     // offsetX and offsetY are the coordinates of your mouse relative to the thing being spied on
   }
   else if (current_shape == "dot") {
-    ctx.beginPath();
+    ctx.beginPath(); // empties list of paths and creates a new one
     ctx.arc(e.offsetX, e.offsetY, 10, 0, 2 * Math.PI);
     ctx.fill();
   }
