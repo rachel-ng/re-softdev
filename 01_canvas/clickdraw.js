@@ -1,3 +1,9 @@
+// Team Existential Crisis -- Sajed Nahian and Rachel Ng
+// SoftDev2 pd7
+// K01 -- ...and I want to Paint It Better
+// 2019-01-31
+
+
 // set variables
 var c = document.getElementById("slate");
 var current_shape = "box";
