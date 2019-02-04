@@ -1,4 +1,4 @@
-var c = document.getElementById("slate");
+var c = document.getElementById("playground");
 var ctx = c.getContext("2d");
 
 var clear_button = document.getElementById("clear");
