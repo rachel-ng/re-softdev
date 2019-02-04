@@ -11,6 +11,7 @@ var growing = true;
 
 
 var drawDot = function() {
+  ctx.fillStyle = "#8a99aa";
   if (growing && radiusID + c.width / 2 < c.width) {
     radiusID += 1;
   }
