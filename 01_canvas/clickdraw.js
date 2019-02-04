@@ -1,18 +1,12 @@
-// Team Existential Crisis -- Sajed Nahian and Rachel Ng
-// SoftDev2 pd7
-// K01 -- ...and I want to Paint It Better
-// 2019-01-31
-
-
 // set variables
 var c = document.getElementById("slate");
 var current_shape = "box";
 
-// acknowledge buttons
+//  buttons
 var clear_button = document.getElementById("clear");
 var toggle_button = document.getElementById("toggle");
 
-// instantiate context
+//  context
 var ctx = c.getContext("2d");
 
 
