@@ -53,9 +53,11 @@ var dvdLogoSetup = function() {
     logo.src = "logo_dvd.jpg";
 
     var dvdLogo = function() {
-	ctx.drawImage(logo, 234, 234, rectWidth, rectHeight);
-
-	requestID = window.requestAnimationFrame(drawDot);
+	ctx.clearRect(0,0,600,600);
+	ctx.drawImage(logo, rectX + xVel, rectY + yVel, rectWidth, rectHeight);
+	xVel += 1;
+	yVel += 1;
+	requestID = window.requestAnimationFrame(dvdLogoSetup);
     }
     dvdLogo();
 }
