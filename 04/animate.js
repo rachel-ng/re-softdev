@@ -9,14 +9,17 @@ var requestID;
 var radiusID = 0;
 var growing = true;
 
-  var rectWidth = 100;
-  var rectHeight = 50;
+//dimensions
+var rectWidth = 100;
+var rectHeight = 50;
 
-  var rectX = Math.floor(Math.random() * (c.width - rectWidth));
-  var rectY = Math.floor(Math.random() * (c.height - rectHeight));
+// location
+var rectX = Math.floor(Math.random() * (c.width - rectWidth));
+var rectY = Math.floor(Math.random() * (c.height - rectHeight));
 
-  var xVel = 1;
-  var yVel = 1;
+// direction movement
+var xVel = 1;
+var yVel = 1;
 
 
 var drawDot = function() {
@@ -48,21 +51,12 @@ var drawDot = function() {
 var dvdLogoSetup = function() {
   window.cancelAnimationFrame(requestID);
 
-  // dimensions
-  // location
-  // direction movement
-
-
-
   var logo = new Image();
   logo.src = "logo_dvd.jpg";
 
 
   var dvdLogo = function() {
     ctx.clearRect(0, 0, c.width, c.height);
-
-    rectX += xVel;
-    rectY += yVel;
 
     if (rectX == 0) {
       xVel = 1;
@@ -77,9 +71,11 @@ var dvdLogoSetup = function() {
       yVel = -1;
     }
 
+    rectX += xVel;
+    rectY += yVel;
+
     ctx.drawImage(logo, rectX, rectY, rectWidth, rectHeight);
     requestID = window.requestAnimationFrame(dvdLogoSetup);
-
   }
 
   dvdLogo();
