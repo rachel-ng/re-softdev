@@ -22,7 +22,7 @@ for i in r_borough("Queens"):
 
 print("\n\n\n\n\nzip")
 for i in r_zip("11355"):
-    print (i["_id"] + "\t" + i["name"])
+    print (str(i["_id"]) + "\t" + i["name"])
 
 
 
