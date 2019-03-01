@@ -5,10 +5,10 @@ db = connection.test
 collection = db.restaurants
 
 def r_borough (borough):
-    return [restaurant._id for restaurant in db.restaurants.find({"borough": borough})]
+    return [restaurant for restaurant in db.restaurants.find({"borough": borough})]
 
 def r_zip (zipcode):
-    return [restaurant._id for restaurant in db.restaurants.find({"address.zip": zipcode})]
+    return [restaurant for restaurant in db.restaurants.find({"address.zip": zipcode})]
 
 def r_zip_grade (zipcode, grade):
     return [restaurant for restaurant in db.restaurants.find({"address.zip":zipcode},{"grades.grade": grade})]
