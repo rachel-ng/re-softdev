@@ -8,10 +8,10 @@ def r_borough (borough):
     return [restaurant["_id"] for restaurant in db.restaurants.find({"borough": borough})]
 
 def r_zip (zipcode):
-    return [restaurant["_id"] for restaurant in db.restaurants.find({"address.zip": zipcode})]
+    return [restaurant["_id"] for restaurant in db.restaurants.find({"address.zipcode": zipcode})]
 
 def r_zip_grade (zipcode, grade):
-    return [restaurant["_id"] for restaurant in db.restaurants.find({"address.zip":zipcode},{"grades.grade": grade})]
+    return [restaurant["_id"] for restaurant in db.restaurants.find({"address.zipcode":zipcode},{"grades.grade": grade})]
 
 def r_zip_thresh (zipcode, thresh):
     return [restaurantrestaurant["_id"] for restaurant in db.restaurants.find({"address.zip":zipcode},{"grades.score": {"$lt": thresh}})]
