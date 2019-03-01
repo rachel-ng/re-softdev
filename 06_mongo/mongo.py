@@ -18,7 +18,7 @@ def r_zip_thresh (zipcode, thresh):
 
 print("borough")
 for i in r_borough("Queens"):
-    print (i["_id"] + "\t" + i["name"])
+    print (str(i["_id"]) + "\t" + i["name"])
 
 print("\n\n\n\n\nzip")
 for i in r_zip("11355"):
