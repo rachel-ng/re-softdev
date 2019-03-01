@@ -16,7 +16,10 @@ def r_zip_grade (zipcode, grade):
 def r_zip_thresh (zipcode, thresh):
     return [restaurantrestaurant["_id"] for restaurant in db.restaurants.find({"address.zip":zipcode},{"grades.score": {"$lt": thresh}})]
 
+print("borough")
 print(r_borough("Queens"))
+
+print("\n\n\n\n\nzip")
 print(r_zip("11355"))
 
 
