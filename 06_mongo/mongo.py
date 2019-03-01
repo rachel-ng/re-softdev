@@ -20,8 +20,8 @@ print(r_borough("Queens"))
 print(r_zip("11355"))
 
 
-All restaurants in a specified borough.
-All restaurants in a specified zip code.
-All restaurants in a specified zip code and with a specified grade.
-All restaurants in a specified zip code with a score below a specified threshold.
-Something more clever.
+#All restaurants in a specified borough.
+#All restaurants in a specified zip code.
+#All restaurants in a specified zip code and with a specified grade.
+#All restaurants in a specified zip code with a score below a specified threshold.
+#Something more clever.
