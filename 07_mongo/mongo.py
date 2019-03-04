@@ -32,6 +32,13 @@ for i in r_zip("11355"):
     print (str(i["_id"]) + "\t" + i["name"])
 
 
+f = open("pokemon.js","r")
+js = f.read()
+js.strip("\n")
+f.close()
+x = open("pokemon.js","w")
+x.write(js)
+x.close()
 
 #All restaurants in a specified borough.
 #All restaurants in a specified zip code.

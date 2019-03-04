@@ -1,0 +1,10 @@
+f = open("pokemon.json","r")
+js = f.read()
+f.close()
+js = js.strip("\n")
+print(js)
+x = open("poke.json","w")
+x.write(js)
+x.close()
+
+print("fin")

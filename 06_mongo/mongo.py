@@ -23,11 +23,3 @@ for i in r_borough("Queens"):
 print("\n\n\n\n\nzip")
 for i in r_zip("11355"):
     print (str(i["_id"]) + "\t" + i["name"])
-
-
-
-#All restaurants in a specified borough.
-#All restaurants in a specified zip code.
-#All restaurants in a specified zip code and with a specified grade.
-#All restaurants in a specified zip code with a score below a specified threshold.
-#Something more clever.
