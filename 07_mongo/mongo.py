@@ -1,21 +1,8 @@
 import pymongo
 SERVER_ADDR = "167.99.13.106"
 connection = pymongo.MongoClient(SERVER_ADDR)
-db = connection.test
-collection = db.pokemon
-
-
-f = open("pokemon.json","r")
-js = f.read()
-f.close()
-js = js.replace("\n","")
-js = js.replace("\t","")
-print(js)
-x = open("poke.json","w")
-x.write(js)
-x.close()
-
-
+db = connection.existentialramen
+collection = db.blackmirror
 #
 #
 #
