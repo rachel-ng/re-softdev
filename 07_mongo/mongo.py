@@ -4,6 +4,18 @@ connection = pymongo.MongoClient(SERVER_ADDR)
 db = connection.test
 collection = db.pokemon
 
+
+f = open("pokemon.json","r")
+js = f.read()
+f.close()
+js = js.replace("\n","")
+js = js.replace("\t","")
+print(js)
+x = open("poke.json","w")
+x.write(js)
+x.close()
+
+
 #
 #
 #
@@ -30,15 +42,6 @@ for i in r_borough("Queens"):
 print("\n\n\n\n\nzip")
 for i in r_zip("11355"):
     print (str(i["_id"]) + "\t" + i["name"])
-
-
-f = open("pokemon.js","r")
-js = f.read()
-js.strip("\n")
-f.close()
-x = open("pokemon.js","w")
-x.write(js)
-x.close()
 
 #All restaurants in a specified borough.
 #All restaurants in a specified zip code.
