@@ -16,7 +16,6 @@ must be inside new brackets for import as a 'json array' by mongo
 
 mongoimport --jsonArray --db existentialramen --collection rickandmorty --drop --file re-softdev/07_mongo/szechuansauce.json
 
-
 '''
 
 import pymongo
