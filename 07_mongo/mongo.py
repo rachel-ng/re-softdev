@@ -10,6 +10,13 @@ collection = db.blackmirror
 #
 
 
+def restaurant_borough(boro):
+    results = collection.find({"borough":boro})
+    for res in results:
+       print(res['name'])
+       print(res['address']['building'] + " " + res['address']['street'])
+       print()
+
 def r_borough (borough):
     return [restaurant for restaurant in db.restaurants.find({"borough": borough})]
 
@@ -29,6 +36,8 @@ for i in r_borough("Queens"):
 print("\n\n\n\n\nzip")
 for i in r_zip("11355"):
     print (str(i["_id"]) + "\t" + i["name"])
+
+restaurant_borough("Queens")
 
 #All restaurants in a specified borough.
 #All restaurants in a specified zip code.
