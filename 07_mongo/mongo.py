@@ -44,7 +44,6 @@ def character_origin(origin):
     for res in results:
         print(res['name'] + " (" + res['status'] + ")\n" + res['origin.name'] + "\n")
 
-
 def character_location(location):
     results = collection.find({"location.name":location})
     for res in results:
