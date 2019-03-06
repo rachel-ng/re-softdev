@@ -15,6 +15,7 @@ last and first characters of each new page)
 must be inside new brackets for import as a 'json array' by mongo
 
 mongoimport --jsonArray --db existentialramen --collection rickandmorty --drop --file re-softdev/07_mongo/szechuansauce.json
+mongod -v --bind_ip_all --noauth --dbpath data/
 
 '''
 
@@ -34,24 +35,24 @@ def character_status(status):
     results = collection.find({"status":status})
     for res in results:
         print(res['name'] + " (" + res['status'] + ")")
-    return results 
+    return results
 
 def character_species(species):
     results = collection.find({"species":species})
     for res in results:
         print(res['name'] + " (" + res['status'] + ")\n" + res['species'])
-    return results 
+    return results
 
 def character_origin(origin):
     results = collection.find({"origin.name":origin})
     for res in results:
         print(res['name'] + " (" + res['status'] + ")\n" + res['origin.name'])
-    return results 
+    return results
 
 def character_location(location):
     results = collection.find({"location.name":location})
     for res in results:
         print(res['name'] + " (" + res['status'] + ")\n" + res['location.name'])
-    return results 
+    return results
 
 print(character_status("Alive"))
