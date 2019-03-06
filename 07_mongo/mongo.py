@@ -28,23 +28,30 @@ def character_name(name):
     results = collection.find({"name":name})
     for res in results:
         print(res['name'] + " (" + res['status'] + ")\n")
+    return results
 
 def character_status(status):
     results = collection.find({"status":status})
     for res in results:
-        print(res['name'] + " (" + res['status'] + ")\n")
+        print(res['name'] + " (" + res['status'] + ")")
+    return results 
 
 def character_species(species):
     results = collection.find({"species":species})
     for res in results:
-        print(res['name'] + " (" + res['status'] + ")\n" + res['species'] + "\n")
+        print(res['name'] + " (" + res['status'] + ")\n" + res['species'])
+    return results 
 
 def character_origin(origin):
     results = collection.find({"origin.name":origin})
     for res in results:
-        print(res['name'] + " (" + res['status'] + ")\n" + res['origin.name'] + "\n")
+        print(res['name'] + " (" + res['status'] + ")\n" + res['origin.name'])
+    return results 
 
 def character_location(location):
     results = collection.find({"location.name":location})
     for res in results:
-        print(res['name'] + " (" + res['status'] + ")\n" + res['location.name'] + "\n")
+        print(res['name'] + " (" + res['status'] + ")\n" + res['location.name'])
+    return results 
+
+print(character_status("Alive"))
