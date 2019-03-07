@@ -1,7 +1,3 @@
-#Team OnePlusOneIsThree -- Soojin Choi && T Fabiha
-#SoftDev2 pd7
-#K07 -- Import/Export Bank
-#2019-03-05
 
 """
 The data set we have used is movies and it contains:
