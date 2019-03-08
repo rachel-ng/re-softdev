@@ -7,7 +7,6 @@
   </head>
 
   <body>
-    Input a number to find all movies made in that year.
 
     <form id="search" action = "/find" method = "POST">
       <select name="query" form="search">
@@ -18,7 +17,12 @@
       <input type = "text" name = "inp">
       <input type = "submit" name = "Submit">
     </form>
-    
+
+    {% set msgs = get_flashed_messages() %}
+    {% for each in msgs %}
+    <h3>Error: {{ each }}</h3>
+    {% endfor %}
+
     <table>
     {% for result in results %}
     <tr>

@@ -30,14 +30,17 @@ def find():
     if request.method == "POST":
         query = request.form.get("query")
         if query == "year":
-            year = int(request.form.get("inp"))
-            results = mongo.in_year(year)
+            try:
+                year = int(request.form.get("inp"))
+                results = mongo.in_year(year)
+            except ValueError:
+                flash("Not an integer, try again!")
         elif query == "genre":
-            genre = request.form.get("inp")
+            genre = request.form.get("inp").capitalize()
             results = mongo.of_genre(genre)
         elif query == "actor":
             actor =  request.form.get("inp")
-            results = mongo.with_actor(actor)
+            results = mongo.with_actor(actor).capitalize()
     return render_template("find.html", results = results)
 
     
