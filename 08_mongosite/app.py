@@ -16,7 +16,7 @@ def hello_world():
 
 @app.route("/ipauth", methods=["GET", "POST"])
 def ipauth():
-    server = request.form["ip"].strip("")
+    server = request.form.get("ip").strip("")
 
     mongo.connect(server)
     mongo.create("movies.json")
@@ -43,8 +43,7 @@ def find():
             results = mongo.with_actor(actor).capitalize()
     return render_template("find.html", results = results)
 
-    
-#====================================RUN========================================
+
 
 if __name__ == "__main__":
     app.debug = True
