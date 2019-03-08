@@ -9,16 +9,26 @@
   <body>
     Input a number to find all movies made in that year.
 
-    <form action = "/sending" method = "POST">
-      Year: <input type = "number" name = "year">
-
+    <form id="search" action = "/find" method = "POST">
+      <select name="query" form="search">
+        <option value="year">Year</option>
+        <option value="genre">Genre</option>
+        <option value="actor">Actor</option>
+        <option value="actors">Actors</option>
+      </select>
+      <input type = "text" name = "year">
       <input type = "submit" name = "Submit">
     </form>
 
+    <table>
     {% for result in results %}
-    <p>result</p>
+    <tr>
+      {% for i in result %}
+      <td>{{ i }}</td>
+      {% endfor %}
+    </tr>
     {% endfor %}
-    
+    </table>
   </body>
   
 </html>

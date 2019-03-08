@@ -39,48 +39,31 @@ def connect(SERVER_ADDR = "159.65.231.92"):
 def create(filename):
     with open(filename) as f:
         j = json.load(f)
-
     collection.insert(j)
 
 # find movies made in a certain year y
 def in_year(y):
     obj = collection.find({"year" : y})
-    print([i['title'] for i in obj])
-    for i in obj:
-        print(i["title"] + i["year"])
-
-    return [i['title'] for i in obj]
+    return [[i['title'],i['year']] for i in obj]
 
 # find movies made with a certain actor
 def with_actor(actor):
     obj = collection.find({"cast" : actor})
-
-    for i in obj:
-        print(i["title"] + i["cast"])
-
-    return obj
+    return [[i['title'],i['cast']] for i in obj]
 
 # find movies of a certain genre
 def of_genre(genre):
     obj = collection.find({"genres" : genre})
-
-    for i in obj:
-        print(i)
-
-    return obj
+    return [[i['title'],i['genre']] for i in obj]
 
 # find movies made with two actors
 def with_actors(actor0, actor1):
     obj = collection.find({"$and" : [{"cast" : actor0}, {"cast" : actor1}] })
-
-    for i in obj:
-        print(i)
-
-    return obj
+    return [[i['title'],i['actor0'],i['actor1']] for i in obj]
 
 
 create("movies.json")
-in_year(1900)
+#in_year(1900)
 #with_actor("Bradley Cooper")
 #of_genre("Crime")
 #with_actors("Bradley Cooper", "Clint Eastwood")
