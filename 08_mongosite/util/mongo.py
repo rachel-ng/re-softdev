@@ -7,13 +7,13 @@
 The data set we have used is movies and it contains:
 - titles of movies
 	- year
-	- cast 
-	- genres 
+	- cast
+	- genres
 
 This dataset is hosted https://raw.githubusercontent.com/prust/wikipedia-movie-data/master/movies.json
 
-Our import mechanism is to get the json file and read the file. We then use 
-the json.load() in order to decode the data and then insert that into the db 
+Our import mechanism is to get the json file and read the file. We then use
+the json.load() in order to decode the data and then insert that into the db
 collection we have initialized.
 """
 
@@ -64,7 +64,7 @@ def with_actors(actor0, actor1):
     return [[i['title'],str(actor0 + ", " + actor1),i['cast']] for i in obj]
 
 
-create("movies.json")
+#create("movies.json")
 #in_year(1900)
 #with_actor("Bradley Cooper")
 #of_genre("Crime")

@@ -1,7 +1,7 @@
 #Team softegg -- Mai Rachlevsky && Rachel Ng && T Fabiha
 #SoftDev2 pd7
 #K 08: Ay Mon, Go Git It From Yer Flask
-#2019-03-08  
+#2019-03-08
 
 from flask import Flask, render_template, session, request, url_for, redirect, flash
 import os
@@ -21,7 +21,7 @@ def ipauth():
     mongo.connect(server)
     mongo.create("movies.json")
     return redirect(url_for("find"))
-    
+
 @app.route("/find", methods=["GET", "POST"])
 def find():
     results = ""
