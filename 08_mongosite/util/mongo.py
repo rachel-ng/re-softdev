@@ -17,7 +17,7 @@ the json.load() in order to decode the data and then insert that into the db
 collection we have initialized.
 """
 
-import json
+import json, os
 import pymongo
 
 
@@ -32,6 +32,7 @@ collection = db.movies
 def connect(SERVER_ADDR = "159.65.231.92"):
     connection = pymongo.MongoClient(SERVER_ADDR)
     print(SERVER_ADDR)
+    print(os.getcwd())
 
 
 # create a database on the mongo server
@@ -46,7 +47,7 @@ def in_year(y):
     obj = collection.find({"year" : y})
     print([i['title'] for i in obj])
     for i in obj:
-        print(i)
+        print(i["title"] + i["year"])
 
     return [i['title'] for i in obj]
 
@@ -55,7 +56,7 @@ def with_actor(actor):
     obj = collection.find({"cast" : actor})
 
     for i in obj:
-        print(i)
+        print(i["title"] + i["cast"])
 
     return obj
 
@@ -78,8 +79,8 @@ def with_actors(actor0, actor1):
     return obj
 
 
-#create("movies.json")
-#in_year(1900)
+create("movies.json")
+in_year(1900)
 #with_actor("Bradley Cooper")
 #of_genre("Crime")
 #with_actors("Bradley Cooper", "Clint Eastwood")
