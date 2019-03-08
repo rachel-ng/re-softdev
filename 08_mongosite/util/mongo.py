@@ -21,12 +21,17 @@ import json
 import pymongo
 
 
+
 SERVER_ADDR = "159.65.231.92"
 connection = pymongo.MongoClient(SERVER_ADDR)
 connection.drop_database("softegg") # drop the database if it exists
 
 db = connection.softegg # create a new database
 collection = db.movies
+
+def connect(SERVER_ADDR = "159.65.231.92"):
+    connection = pymongo.MongoClient(SERVER_ADDR)
+    print(SERVER_ADDR)
 
 
 # create a database on the mongo server
@@ -39,9 +44,11 @@ def create(filename):
 # find movies made in a certain year y
 def in_year(y):
     obj = collection.find({"year" : y})
-
+    print([i['title'] for i in obj])
     for i in obj:
         print(i)
+
+    return [i['title'] for i in obj]
 
 # find movies made with a certain actor
 def with_actor(actor):
@@ -50,12 +57,16 @@ def with_actor(actor):
     for i in obj:
         print(i)
 
+    return obj
+
 # find movies of a certain genre
 def of_genre(genre):
     obj = collection.find({"genres" : genre})
 
     for i in obj:
         print(i)
+
+    return obj
 
 # find movies made with two actors
 def with_actors(actor0, actor1):
@@ -64,9 +75,11 @@ def with_actors(actor0, actor1):
     for i in obj:
         print(i)
 
+    return obj
 
-create("movies.json")
-in_year(1900)
+
+#create("movies.json")
+#in_year(1900)
 #with_actor("Bradley Cooper")
 #of_genre("Crime")
 #with_actors("Bradley Cooper", "Clint Eastwood")

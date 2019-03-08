@@ -10,25 +10,34 @@ from util import mongo
 app = Flask(__name__)
 app.secret_key = os.urandom(32)
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def hello_world():
     return render_template("ip.html")
 
-@app.route("/ipauth")
+@app.route("/ipauth", methods=["GET", "POST"])
 def ipauth():
     server = request.form["ip"].strip("")
 
     mongo.connect(server)
     return redirect(url_for("find"))
     
-@app.route("/find")
+@app.route("/find", methods=["GET", "POST"])
 def find():
-    return render_template("find.html")
+    results = ""
+    if request.method == "POST":
+        year = request.form["year"]
+        results = mongo.in_year(year)
+    return render_template("find.html", results = results)
 
 
-@app.route("/sending")
+@app.route("/sending", methods=["GET", "POST"])
 def sending():
-    return redirect(url_for("find"))
+    results = ""
+    if request.method == "POST":
+        year = request.form["year"]
+        results = mongo.in_year(year)
+    return render_template("find.html", results = results)
+    #return redirect(url_for("find"))
     
 #====================================RUN========================================
 
