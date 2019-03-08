@@ -39,8 +39,15 @@ def find():
             genre = request.form.get("inp").capitalize()
             results = mongo.of_genre(genre)
         elif query == "actor":
-            actor =  request.form.get("inp")
-            results = mongo.with_actor(actor).capitalize()
+            actor =  request.form.get("inp").capitalize()
+            results = mongo.with_actor(' '.join([i.capitalize() for i in actor.split()]))
+        elif query == "actors":
+            actor0, actor1 =  request.form.get("inp").split(",")
+            actor0 = ' '.join([i.capitalize() for i in actor0.split()])
+            actor1 = ' '.join([i.capitalize() for i in actor1.split()])
+            print(actor0)
+            print(actor1)
+            results = mongo.with_actors(actor0,actor1)
     return render_template("find.html", results = results)
 
 

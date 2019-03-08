@@ -22,17 +22,19 @@ import pymongo
 
 
 
-SERVER_ADDR = "159.65.231.92"
-connection = pymongo.MongoClient(SERVER_ADDR)
-connection.drop_database("softegg") # drop the database if it exists
+SERVER_ADDR = "167.99.13.106"
 
+def connect(SERVER_ADDR):
+    connection = pymongo.MongoClient(SERVER_ADDR)
+    connection.drop_database("softegg")
+    db = connection.softegg # create a new database
+    collection = db.movies
+    print(SERVER_ADDR)
+
+connection = pymongo.MongoClient(SERVER_ADDR)
+connection.drop_database("softegg")
 db = connection.softegg # create a new database
 collection = db.movies
-
-def connect(SERVER_ADDR = "159.65.231.92"):
-    connection = pymongo.MongoClient(SERVER_ADDR)
-    print(SERVER_ADDR)
-    print(os.getcwd())
 
 
 # create a database on the mongo server
@@ -59,7 +61,7 @@ def of_genre(genre):
 # find movies made with two actors
 def with_actors(actor0, actor1):
     obj = collection.find({"$and" : [{"cast" : actor0}, {"cast" : actor1}] })
-    return [[i['title'],i['actor0'],i['actor1']] for i in obj]
+    return [[i['title'],str(actor0 + ", " + actor1),i['cast']] for i in obj]
 
 
 create("movies.json")
