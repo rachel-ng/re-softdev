@@ -1,3 +1,7 @@
+#Team softegg -- Mai Rachlevsky && Rachel Ng && T Fabiha
+#SoftDev2 pd7
+#K 08: Ay Mon, Go Git It From Yer Flask
+#2019-03-08
 
 """
 The data set we have used is movies and it contains:
@@ -16,10 +20,14 @@ collection we have initialized.
 import json
 import pymongo
 
+
 SERVER_ADDR = "159.65.231.92"
 connection = pymongo.MongoClient(SERVER_ADDR)
-db = connection.oneplusoneisthree
+connection.drop_database("softegg") # drop the database if it exists
+
+db = connection.softegg # create a new database
 collection = db.movies
+
 
 # create a database on the mongo server
 def create(filename):
@@ -58,7 +66,7 @@ def with_actors(actor0, actor1):
 
 
 create("movies.json")
-#in_year(1900)
+in_year(1900)
 #with_actor("Bradley Cooper")
 #of_genre("Crime")
-with_actors("Bradley Cooper", "Clint Eastwood")
+#with_actors("Bradley Cooper", "Clint Eastwood")
