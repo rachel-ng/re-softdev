@@ -54,7 +54,7 @@ def with_actor(actor):
 # find movies of a certain genre
 def of_genre(genre):
     obj = collection.find({"genres" : genre})
-    return [[i['title'],i['genre']] for i in obj]
+    return [[i['title'],i['genres']] for i in obj]
 
 # find movies made with two actors
 def with_actors(actor0, actor1):

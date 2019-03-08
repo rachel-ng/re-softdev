@@ -28,27 +28,18 @@ def find():
     if request.method == "GET":
         return render_template("find.html")
     if request.method == "POST":
-        if request.form.get("query") == "year":
-            year = int(request.form.get("year"))
+        query = request.form.get("query")
+        if query == "year":
+            year = int(request.form.get("inp"))
             results = mongo.in_year(year)
-        if request.form.get("query") == "genre":
-            genre = request.form.get("genre")
+        elif query == "genre":
+            genre = request.form.get("inp")
             results = mongo.of_genre(genre)
-        if request.form.get("query") == "actor":
-            actor =  request.form.get("actor")
+        elif query == "actor":
+            actor =  request.form.get("inp")
             results = mongo.with_actor(actor)
     return render_template("find.html", results = results)
 
-
-@app.route("/sending", methods=["GET", "POST"])
-def sending():
-    results = ""
-    if request.method == "POST":
-        year = int(request.form["year"])
-        results = mongo.in_year(year)
-    #print(results)
-    return render_template("find.html", results = results)
-    #return redirect(url_for("find"))
     
 #====================================RUN========================================
 
