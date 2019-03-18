@@ -5,32 +5,43 @@
 
 
 var svg = document.getElementById("vimage");
-var c = document.getElementById("playground");
-var ctx = c.getContext("2d");
-
-var clear_button = document.getElementById("but_clear");
-var move_button = document.getElementById("but_clear");
-var rand_button = document.getElementById("but_rand");
-
 var requestID;
 
-// location
-var rectX = Math.floor(Math.random() * (c.width - rectWidth));
-var rectY = Math.floor(Math.random() * (c.height - rectHeight));
+var clear_button = document.getElementById("but_clear");
+var move_button = document.getElementById("but_move");
+var rand_button = document.getElementById("but_rand");
 
-// direction movement
-var xVel = 1;
-var yVel = 1;
+var h = 500;
+var w = 500;
+
+svg.addEventListener("click", function(e) {drawCircle(e);});
+
 
 clear_button.addEventListener("click", function(e) {
   svg.innerHTML = "";
   console.log("cleared");
 });
 
-svg.addEventListener("click", function(e) {drawCircle(e);});
+move_button.addEventListener("click", function(e) {
+  moving(e)
+});
+
+
+
+
+
 
 draw = true;
 
+var circle = function(cx, cy, r, fill, elem_node) {
+  elem_node.setAttribute("cx", cx);
+  elem_node.setAttribute("cy", cy);
+  elem_node.setAttribute("r", r);
+  elem_node.setAttribute("fill", fill);
+  elem_node.setAttribute("xVel", 1);
+  elem_node.setAttribute("yVel", 1);
+  svg.appendChild(elem_node);
+}
 
 
 var drawCircle = function(e) {
@@ -38,18 +49,10 @@ var drawCircle = function(e) {
   c.addEventListener("click", function(evt) {c_clicked(evt)})
 
   if (draw) {
-      circle(e.offsetX, e.offsetY, 10, "#8a99aa", c);
+    circle(e.offsetX, e.offsetY, 10, "#8a99aa", c);
   }
 
   draw = true;
-}
-
-var circle = function(cx, cy, r, fill, elem_node) {
-    c.setAttribute("cx", cx);
-    c.setAttribute("cy", cy);
-    c.setAttribute("r", r);
-    c.setAttribute("fill", fill);
-    svg.appendChild(elem_node);
 }
 
 var c_clicked = function(e) {
@@ -61,41 +64,42 @@ var c_clicked = function(e) {
   else {
     svg.removeChild(e.target)
     var c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-      c.addEventListener("click", function(evt){c_clicked(evt)});
-      circle(Math.floor(Math.random() * 500), Math.floor(Math.random() * 500), 10, "#8a99aa", c);
-    c.setAttibute("cx", );
-    c.setAttribute("cy", Math.floor(Math.random() * 500));
-    c.setAttribute("r", 10);
-    c.setAttribute("fill", "#8a99aa");
-    svg.appendChild(c);
+    c.addEventListener("click", function(evt){c_clicked(evt)});
+    circle(Math.floor(Math.random() * 500), Math.floor(Math.random() * 500), 10, "#8a99aa", c);
   }
 }
 
-var moving = function() {
+
+var moving = function(e) {
   window.cancelAnimationFrame(requestID);
 
-  var dvdLogo = function() {
-    ctx.clearRect(0, 0, c.width, c.height);
+  var elems = svg.children;
 
-    if (rectX == 0) {
-      xVel = 1;
+  for (var i = 0; i < elems.length; i++) {
+    window.cancelAnimationFrame(requestID);
+
+    console.log(elems[i])
+
+    var cx = parseInt( elems[i].getAttribute("cx") );
+    var cy = parseInt( elems[i].getAttribute("cy") );
+
+    var xVel = parseInt( elems[i].getAttribute("xVel") );
+    var yVel = parseInt( elems[i].getAttribute("yVel") );
+    if (cx >= w || cx <= 0) {
+      xVel *= 1;
+      elems[i].setAttribute( "cx", cx );
     }
-    if (rectX == c.width - rectWidth) {
-      xVel = -1;
-    }
-    if (rectY == 0) {
-      yVel = 1;
-    }
-    if (rectY == c.height - rectHeight) {
-      yVel = -1;
+    if (cy == 0 || cy == h) {
+      yVel *= -1;
+      elems[i].setAttribute( "cy", cy );
     }
 
-    rectX += xVel;
-    rectY += yVel;
+    cx += xVel;
+    cy += yVel;
 
-    ctx.drawImage(logo, rectX, rectY, rectWidth, rectHeight);
-    requestID = window.requestAnimationFrame(dvdLogoSetup);
+    elems[i].setAttribute( "cx", cx );
+    elems[i].setAttribute( "cy", cy );
+
+    requestID = requestAnimationFrame(moving);
   }
-
-  dvdLogo();
-}
+};
