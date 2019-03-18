@@ -11,8 +11,8 @@ var clear_button = document.getElementById("but_clear");
 var move_button = document.getElementById("but_move");
 var rand_button = document.getElementById("but_rand");
 
-var h = 500;
-var w = 500;
+var height = 500;
+var width = 500;
 
 svg.addEventListener("click", function(e) {drawCircle(e);});
 
@@ -26,10 +26,9 @@ move_button.addEventListener("click", function(e) {
   moving(e)
 });
 
-
-
-
-
+rand_button.addEventListener("click", function(e) {
+  rand(e)
+});
 
 draw = true;
 
@@ -78,27 +77,64 @@ var moving = function(e) {
   for (var i = 0; i < elems.length; i++) {
     window.cancelAnimationFrame(requestID);
 
-    console.log(elems[i])
+    var x = parseInt(elems[i].getAttribute("cx"));
+    var y = parseInt(elems[i].getAttribute("cy"));
 
-    var cx = parseInt( elems[i].getAttribute("cx") );
-    var cy = parseInt( elems[i].getAttribute("cy") );
+    var xVel = parseInt(elems[i].getAttribute("xVel"));
+    var yVel = parseInt(elems[i].getAttribute("yVel"));
 
-    var xVel = parseInt( elems[i].getAttribute("xVel") );
-    var yVel = parseInt( elems[i].getAttribute("yVel") );
-    if (cx >= w || cx <= 0) {
-      xVel *= 1;
-      elems[i].setAttribute( "cx", cx );
+    console.log(x + " " + y + "\t\t\t" + xVel + " " + yVel);
+
+    if (x >= width || x <= 0) {
+      xVel *= -1;
+      elems[i].setAttribute("xVel", xVel);
     }
-    if (cy == 0 || cy == h) {
+    if (y <= 0 || y >= height) {
       yVel *= -1;
-      elems[i].setAttribute( "cy", cy );
+      elems[i].setAttribute("yVel", yVel);
     }
 
-    cx += xVel;
-    cy += yVel;
+    x += xVel;
+    y += yVel;
 
-    elems[i].setAttribute( "cx", cx );
-    elems[i].setAttribute( "cy", cy );
+    elems[i].setAttribute( "cx", x );
+    elems[i].setAttribute( "cy", y );
+
+    requestID = requestAnimationFrame(moving);
+  }
+};
+
+
+var rand = function(e) {
+  window.cancelAnimationFrame(requestID);
+
+  var elems = svg.children;
+
+  for (var i = 0; i < elems.length; i++) {
+    window.cancelAnimationFrame(requestID);
+
+    var x = parseInt(elems[i].getAttribute("cx"));
+    var y = parseInt(elems[i].getAttribute("cy"));
+
+    var xVel = parseInt(elems[i].getAttribute("xVel"));
+    var yVel = parseInt(elems[i].getAttribute("yVel"));
+
+    console.log(x + " " + y + "\t\t\t" + xVel + " " + yVel);
+
+    if (x >= width || x <= 0) {
+      xVel *= -1 * Math.floor(Math.random() * 10);
+      elems[i].setAttribute("xVel", xVel % 10);
+    }
+    if (y <= 0 || y >= height) {
+      yVel *= -1 * Math.floor(Math.random() * 10);
+      elems[i].setAttribute("yVel", yVel % 10);
+    }
+
+    x += xVel;
+    y += yVel;
+
+    elems[i].setAttribute("cx", x);
+    elems[i].setAttribute("cy", y);
 
     requestID = requestAnimationFrame(moving);
   }
