@@ -16,17 +16,19 @@ svg.addEventListener("click", function(e) {drawCircle(e);});
 
 draw = true;
 
-
+var circle = function(cx, cy, r, fill, elem_node) {
+  elem_node.setAttribute("cx", cx);
+  elem_node.setAttribute("cy", cy);
+  elem_node.setAttribute("r", r);
+  elem_node.setAttribute("fill", fill);
+}
 
 var drawCircle = function(e) {
   var c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
   c.addEventListener("click", function(evt) {c_clicked(evt)})
 
   if (draw) {
-    c.setAttribute("cx", e.offsetX);
-    c.setAttribute("cy", e.offsetY);
-    c.setAttribute("r", 10);
-    c.setAttribute("fill", "#8a99aa");
+    circle(e.offsetX, e.offsetY, 10, "#8a99aa", c);
     svg.appendChild(c);
   }
 
@@ -43,10 +45,7 @@ var c_clicked = function(e) {
     svg.removeChild(e.target)
     var c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
     c.addEventListener("click", function(evt){c_clicked(evt)});
-    c.setAttribute("cx", Math.floor(Math.random() * 500));
-    c.setAttribute("cy", Math.floor(Math.random() * 500));
-    c.setAttribute("r", 10);
-    c.setAttribute("fill", "#8a99aa");
+    circle(Math.floor(Math.random() * 500), Math.floor(Math.random() * 500), 10, "#8a99aa", c);
     svg.appendChild(c);
   }
 }
