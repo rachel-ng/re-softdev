@@ -1,16 +1,20 @@
+var data = [[Locke,4], [Reyes,8], [Ford,15], [Jarrah,16], [Shephard,23]];
+
 var width = 420,
     barHeight = 20;
 
 var x = d3.scaleLinear()
+    .domain([0, d3.max(data, function(d) {return d[1];})])
     .range([0, width]);
 
 var chart = d3.select(".chart")
     .attr("width", width);
 
-d3.tsv("data.tsv", type, function(error, data) {
-  x.domain([0, d3.max(data, function(d) { return d.value; })]);
+// d3.tsv("data.tsv", type, function(error, data) {
+//    x.domain([0, d3.max(data, function(d) { return d.value; })]);
 
-  chart.attr("height", barHeight * data.length);
+
+chart.attr("height", barHeight * data.length);
 
   var bar = chart.selectAll("g")
       .data(data)
