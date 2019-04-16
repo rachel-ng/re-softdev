@@ -38,6 +38,7 @@ print(set_diff(['cat','dog','rabbit'], ['cat','panda','tiger']))
 #symmetric difference - set of all objects that are a member of exactly one of A and B
 #elements which are in one of the sets but not both
 
+#union_set(set_diff(a, b), set_diff(b, a))
 def symm_diff(a, b):
     return [i for i in b if i not in a] + [i for i in a if i not in b]
     
