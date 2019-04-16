@@ -43,6 +43,7 @@ def symm_diff(a, b):
     
 print(symm_diff([1,2,3], [2,3,4]))
 print(symm_diff([2,3,4], [2,3,1]))
+print(symm_diff([1,2,3,4,5,6,78], [2,3,4]))
 print(symm_diff(['cat','dog','rabbit'], ['cat','panda','tiger']))
 
 #cartesian product of A and B
@@ -54,6 +55,7 @@ def cart_prod(a, b):
 
 print(cart_prod([1,2],['red','white']))
 print(cart_prod([5,6],['cat','dog']))
+print(cart_prod([1,2,3,4,5,6,78], [2,3,4]))
 print(cart_prod(['cat','dog','rabbit'], ['cat','panda','tiger']))
 
 #
