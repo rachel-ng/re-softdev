@@ -8,8 +8,7 @@ reduce((lambda x, y: x * y), [1,2,3,4]) # = 24
 #most frequently occuring word
 
 i_file = open("2591-0.txt", "r+")
-grimm = [line.strip("\r\n ") for line in i_file if line != "\r\n"]
-print([i for i in reduce((lambda x, y: x + y), grimm).split(" ") if i != ''])
+grimm = [line.replace("\r\n"," ") for line in i_file if line != "\r\n"]
+grimm = [i for i in reduce((lambda x, y: x + y), grimm).split(" ") if i != '']
 
-def freq_word(word):
-    
+print(grimm)
