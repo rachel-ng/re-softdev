@@ -92,7 +92,7 @@ function update_table (m_val, y_val, s_val) {
     in_table = data.filter(function(n) {return n[s_val] > 0 && n["schoolyear"] == y_val;});
 
     if (m_val == "avg") {
-      res.innerHTML = "average " + s_val + ": " + in_table.reduce(function(a,b) {return a + b[s_val]}, 0) / in_table.reduce(function(a,b) {return a + 1}, 0);
+      res.innerHTML = "average " + s_val + " in " + y_val + ": " + in_table.reduce(function(a,b) {return a + b[s_val]}, 0) / in_table.reduce(function(a,b) {return a + 1}, 0);
     }
 
     if (m_val == "num") {
@@ -104,12 +104,12 @@ function update_table (m_val, y_val, s_val) {
       nums_len = all_nums.length;
       if (nums_len % 2 == 0) {
         med = (all_nums[nums_len / 2 - 1] + numbers[nums_len / 2]) / 2
-        res.innerHTML = "median " + s_val + ": " + med;
+        res.innerHTML = "median " + s_val  + " in " + y_val + " in : " + med;
         console.log(med)
       }
       else {
         med = all_nums[(nums_len - 1) / 2];
-        res.innerHTML = "median " + s_val + ": " + med;
+        res.innerHTML = "median " + s_val + " in " + y_val +  ": " + med;
         console.log(med)
       }
     }
