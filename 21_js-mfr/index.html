@@ -1,9 +1,39 @@
 <html>
   <head>
+    <style>
+      th, td {
+          padding: 10px;
+      }
+      #results {
+          margin: 0 auto;
+          padding: 10px 20px;
+      }
+    </style>
   </head>
   <body>
+    <select id="m">
+      <option value="avg">average</option>
+      <option value="median">median</option>
+      <option value="num">number of schools</option>
+    </select>
+
+    <select id="y">
+      <option value="n/a">n/a</option>
+      <option value="20062007">20062007</option>
+      <option value="20072008">20072008</option>
+      <option value="20082009">20082009</option>
+      <option value="20092010">20092010</option>
+      <option value="20102011">20102011</option>
+      <option value="20112012">20112012</option>
+    </select>
+
     <select id="s"></select>
+
+    <div id="results">
+    </div>
+
     <table id="t"></table>
+
     <script type="text/javascript" src="index.js"></script>
   </body>
 </html>
