@@ -86,13 +86,15 @@ def make_counter():
     def inner():
         nonlocal x
         x += 1
-    return inner()
+        def val(self):
+            return x
+        return x
+    return inner
 
 ctr1 = make_counter()
 print(ctr1())
+print(ctr1())
 ctr2 = make_counter()
 print(ctr2())
-
 print(ctr1())
-
 print(ctr2())
