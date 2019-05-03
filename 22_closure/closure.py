@@ -1,3 +1,9 @@
+# Rachel Ng
+# SoftDev2 pd7
+# K22 -- Closure
+# 2019-04-30
+
+
 def inc(x):
     return x + 1
 
@@ -83,18 +89,23 @@ print(outer3())
 
 def make_counter():
     x = 0
-    def inner():
+    def incre():
         nonlocal x
         x += 1
-        def val(self):
-            return x
         return x
-    return inner
+    def accessor():
+        return x
+    return incre, acessor
 
-ctr1 = make_counter()
+ctr1, cnt1 = make_counter()
 print(ctr1())
+print(cnt1())
 print(ctr1())
-ctr2 = make_counter()
+print(cnt1())
+ctr2, cnt2 = make_counter()
 print(ctr2())
+print(cnt2())
 print(ctr1())
+print(cnt1())
 print(ctr2())
+print(cnt2())
